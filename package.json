@@ -2,7 +2,7 @@
   "name": "jimmy-wu-portfolio",
   "private": true,
   "scripts": {
-    "build": "node -e \"console.log('Static portfolio build complete')\"",
+    "build": "node scripts/build.mjs",
     "test": "node --test tests/portfolio.test.mjs"
   }
 }

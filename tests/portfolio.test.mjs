@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
+import { promisify } from 'node:util';
 import test from 'node:test';
 
+const run = promisify(execFile);
 const page = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 
@@ -26,4 +29,12 @@ test('keeps the GitHub URL in the link target rather than visible copy', () => {
 
 test('declares the static-site build command required by hosting', () => {
   assert.equal(typeof packageJson.scripts.build, 'string');
+});
+
+test('build creates a deployable dist directory', async () => {
+  await run(process.execPath, ['scripts/build.mjs'], { cwd: new URL('..', import.meta.url) });
+  const builtPage = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const builtStyles = await readFile(new URL('../dist/assets/styles.css', import.meta.url), 'utf8');
+  assert.match(builtPage, /Jimmy Wu/);
+  assert.match(builtStyles, /--surface/);
 });
