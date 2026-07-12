@@ -40,5 +40,7 @@ test('build creates a deployable dist directory', async () => {
   assert.match(builtPage, /Jimmy Wu/);
   assert.match(builtStyles, /--surface/);
   assert.match(builtServer, /createServer/);
+  assert.match(builtServer, /import \{ createServer \}/);
+  assert.doesNotMatch(builtServer, /require\(/);
   assert.match(builtHosting, /project_id/);
 });

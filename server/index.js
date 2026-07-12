@@ -1,8 +1,9 @@
-const { createServer } = require('node:http');
-const { readFile } = require('node:fs/promises');
-const { extname, join, normalize } = require('node:path');
+import { createServer } from 'node:http';
+import { readFile } from 'node:fs/promises';
+import { extname, join, normalize, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = join(__dirname, '..');
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
