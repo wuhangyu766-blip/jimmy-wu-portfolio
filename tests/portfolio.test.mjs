@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const page = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 
 test('includes the approved identity and contact links', () => {
   assert.match(page, /Jimmy Wu/);
@@ -21,4 +22,8 @@ test('includes the required sections and excludes the phone number', () => {
 test('keeps the GitHub URL in the link target rather than visible copy', () => {
   assert.doesNotMatch(page, />https:\/\/github\.com\/wuhangyu766-blip</);
   assert.match(page, />访问 GitHub\s*</);
+});
+
+test('declares the static-site build command required by hosting', () => {
+  assert.equal(typeof packageJson.scripts.build, 'string');
 });
