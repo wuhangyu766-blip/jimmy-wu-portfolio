@@ -39,9 +39,8 @@ test('build creates a deployable dist directory', async () => {
   const builtHosting = await readFile(new URL('../dist/.openai/hosting.json', import.meta.url), 'utf8');
   assert.match(builtPage, /Jimmy Wu/);
   assert.match(builtStyles, /--surface/);
-  assert.match(builtServer, /createServer/);
-  assert.match(builtServer, /import \{ createServer \}/);
-  assert.doesNotMatch(builtServer, /require\(/);
-  assert.doesNotMatch(builtServer, /fileURLToPath/);
+  assert.match(builtServer, /export default/);
+  assert.match(builtServer, /fetch\(request, env\)/);
+  assert.match(builtServer, /env\.ASSETS\.fetch\(request\)/);
   assert.match(builtHosting, /project_id/);
 });
