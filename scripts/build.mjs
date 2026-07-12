@@ -8,5 +8,7 @@ const dist = resolve(root, 'dist');
 await mkdir(dist, { recursive: true });
 await copyFile(resolve(root, 'index.html'), resolve(dist, 'index.html'));
 await cp(resolve(root, 'assets'), resolve(dist, 'assets'), { recursive: true, force: true });
+await cp(resolve(root, 'server'), resolve(dist, 'server'), { recursive: true, force: true });
+await cp(resolve(root, '.openai'), resolve(dist, '.openai'), { recursive: true, force: true });
 
 console.log('Static portfolio build complete');
