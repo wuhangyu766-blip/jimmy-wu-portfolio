@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import test from 'node:test';
+
+const page = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+
+test('includes the approved identity and contact links', () => {
+  assert.match(page, /Jimmy Wu/);
+  assert.match(page, /吴航宇/);
+  assert.match(page, /mailto:961360749@qq\.com/);
+  assert.match(page, /https:\/\/github\.com\/wuhangyu766-blip/);
+});
+
+test('includes the required sections and excludes the phone number', () => {
+  for (const id of ['projects', 'experience', 'skills', 'contact']) {
+    assert.match(page, new RegExp(`id="${id}"`));
+  }
+  assert.doesNotMatch(page, /19550128365/);
+});
+
+test('keeps the GitHub URL in the link target rather than visible copy', () => {
+  assert.doesNotMatch(page, />https:\/\/github\.com\/wuhangyu766-blip</);
+  assert.match(page, />访问 GitHub\s*</);
+});
