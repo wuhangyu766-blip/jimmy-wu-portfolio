@@ -34,10 +34,11 @@ test('declares the static-site build command required by hosting', () => {
 
 test('build creates a deployable dist directory', async () => {
   await run(process.execPath, ['scripts/build.mjs'], { cwd: new URL('..', import.meta.url) });
-  const builtPage = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
-  const builtStyles = await readFile(new URL('../dist/assets/styles.css', import.meta.url), 'utf8');
+  const builtPage = await readFile(new URL('../dist/client/index.html', import.meta.url), 'utf8');
+  const builtStyles = await readFile(new URL('../dist/client/assets/styles.css', import.meta.url), 'utf8');
   const builtServer = await readFile(new URL('../dist/server/index.js', import.meta.url), 'utf8');
   const builtHosting = await readFile(new URL('../dist/.openai/hosting.json', import.meta.url), 'utf8');
+  await assert.rejects(readFile(new URL('../dist/index.html', import.meta.url), 'utf8'));
   assert.match(builtPage, /Jimmy Wu/);
   assert.match(builtStyles, /--surface/);
   assert.match(builtServer, /export default/);
