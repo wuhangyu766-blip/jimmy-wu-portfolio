@@ -12,75 +12,109 @@
     <header class="site-header">
       <div class="shell nav-wrap">
         <a class="brand" href="#home" aria-label="返回首页">JW<span>.</span></a>
-        <nav aria-label="页面导航">
-          <a href="#projects">项目</a>
-          <a href="#experience">经历</a>
-          <a href="#skills">技能</a>
-          <a href="#contact">联系</a>
+        <nav aria-label="页面导航" data-i18n-aria-label data-zh="页面导航" data-en="Page navigation">
+          <a href="#education" data-i18n data-zh="教育" data-en="Education">教育</a>
+          <a href="#projects" data-i18n data-zh="校园经历" data-en="Campus">校园经历</a>
+          <a href="#experience" data-i18n data-zh="实习经历" data-en="Internships">实习经历</a>
+          <a href="#skills" data-i18n data-zh="技能" data-en="Skills">技能</a>
+          <a href="#contact" data-i18n data-zh="联系" data-en="Contact">联系</a>
         </nav>
+        <div class="preference-controls" aria-label="网站设置" data-i18n-aria-label data-zh="网站设置" data-en="Website settings">
+          <button type="button" class="preference-button language-button" data-language-toggle aria-label="Switch to English">EN</button>
+          <button type="button" class="preference-button theme-button" data-theme-toggle aria-label="切换至深色模式" aria-pressed="false">◐</button>
+        </div>
       </div>
     </header>
 
     <main id="home">
       <section class="hero shell" aria-labelledby="page-title">
-        <p class="eyebrow">PERSONAL PROFILE</p>
+        <p class="eyebrow" data-i18n data-zh="个人简介" data-en="PERSONAL PROFILE">个人简介</p>
         <div class="hero-grid">
-          <div>
-            <h1 id="page-title">Jimmy Wu <span>/ 吴航宇</span></h1>
-            <p class="hero-lede">金融研究 · 量化分析 · 投资银行</p>
-            <p class="intro">具备买方行研与卖方投行复合实习背景，专注于从数据、产业和财务维度理解商业与资本市场问题。</p>
+          <div class="hero-copy">
+            <h1 id="page-title"><span>Jimmy Wu</span> <span class="name-secondary" data-i18n data-zh="/ 吴航宇" data-en="/ Hangyu Wu">/ 吴航宇</span></h1>
+            <p class="hero-lede" data-i18n data-zh="金融研究 · 量化分析 · 投资银行" data-en="Investment Research · Quantitative Analysis · Investment Banking">金融研究 · 量化分析 · 投资银行</p>
+            <p class="intro" data-i18n data-zh="具备买方行研与卖方投行复合实习背景，专注于从数据、产业和财务维度理解商业与资本市场问题。" data-en="Master of Finance candidate with buy-side research and sell-side investment-banking experience, focused on translating data, industry dynamics, and financial analysis into investment insights.">具备买方行研与卖方投行复合实习背景，专注于从数据、产业和财务维度理解商业与资本市场问题。</p>
           </div>
-          <dl class="quick-facts" aria-label="个人摘要">
-            <div><dt>EDUCATION</dt><dd>西南财经大学<br>金融硕士在读</dd></div>
-            <div><dt>QUALIFICATION</dt><dd>CFA 一级<br>基金从业资格</dd></div>
-            <div><dt>TOOLS</dt><dd>Python · Stata<br>Excel · CSMAR</dd></div>
+          <dl class="quick-facts" aria-label="个人摘要" data-i18n-aria-label data-zh="个人摘要" data-en="Profile summary">
+            <div><dt data-i18n data-zh="教育背景" data-en="EDUCATION">教育背景</dt><dd><span data-i18n data-zh="西南财经大学" data-en="Southwestern University of Finance and Economics">西南财经大学</span><br><span data-i18n data-zh="金融硕士 · 2025.09 - 2027.06" data-en="Master of Finance · Sep 2025 - Jun 2027">金融硕士 · 2025.09 - 2027.06</span></dd></div>
+            <div><dt data-i18n data-zh="资格证书" data-en="QUALIFICATIONS">资格证书</dt><dd><span data-i18n data-zh="CFA 一级已通过" data-en="CFA Program Level I, Passed">CFA 一级已通过</span><br><span data-i18n data-zh="基金从业资格" data-en="Fund Practitioner Qualification">基金从业资格</span></dd></div>
+            <div><dt data-i18n data-zh="工具" data-en="TOOLS">工具</dt><dd>Python · Stata<br>Excel · CSMAR</dd></div>
           </dl>
+          <div class="hero-bouquet" aria-hidden="true">
+            <svg viewBox="0 0 360 420" role="presentation">
+              <defs>
+                <linearGradient id="petal-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe5e8"/><stop offset="1" stop-color="#d46782"/></linearGradient>
+                <linearGradient id="petal-gradient-two" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0cf"/><stop offset="1" stop-color="#e7ab58"/></linearGradient>
+                <linearGradient id="stem-gradient" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#315f4a"/><stop offset="1" stop-color="#79a279"/></linearGradient>
+              </defs>
+              <ellipse class="bouquet-shadow" cx="182" cy="391" rx="108" ry="14"/>
+              <g class="bouquet-stems">
+                <path d="M179 390 C174 304 183 218 122 118"/>
+                <path d="M180 390 C191 292 175 214 215 103"/>
+                <path d="M181 390 C203 298 230 224 276 144"/>
+                <path d="M177 390 C151 289 111 220 73 162"/>
+              </g>
+              <g class="leaves"><path d="M150 271 C108 249 96 210 147 226 C168 238 166 258 150 271"/><path d="M208 249 C250 222 275 227 252 264 C232 275 216 266 208 249"/><path d="M132 314 C95 294 87 268 132 278 C149 289 147 304 132 314"/></g>
+              <g class="flower flower-one"><path class="petal" d="M122 118 C78 100 79 53 117 79 C122 34 163 53 141 91 C180 78 187 119 146 124 C173 153 132 174 119 135 C86 158 64 125 101 115Z"/><circle class="flower-core" cx="122" cy="118" r="15"/></g>
+              <g class="flower flower-two"><path class="petal petal-gold" d="M215 103 C178 85 184 47 216 70 C221 32 257 51 239 83 C274 72 283 110 248 115 C271 143 236 163 216 128 C187 147 165 113 199 104Z"/><circle class="flower-core" cx="215" cy="103" r="14"/></g>
+              <g class="flower flower-three"><path class="petal" d="M276 144 C243 125 244 91 274 108 C278 77 310 90 298 120 C329 111 335 142 306 151 C327 174 300 196 278 165 C253 181 235 154 262 143Z"/><circle class="flower-core" cx="276" cy="144" r="12"/></g>
+              <g class="flower flower-four"><path class="petal petal-gold" d="M73 162 C46 148 47 119 71 133 C74 106 102 118 91 143 C117 136 123 163 98 171 C116 192 91 210 74 183 C52 197 37 176 59 163Z"/><circle class="flower-core" cx="73" cy="162" r="10"/></g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section shell" aria-labelledby="education-title">
+        <div class="section-heading"><p class="eyebrow" data-i18n data-zh="教育背景" data-en="EDUCATION">教育背景</p><h2 id="education-title" data-i18n data-zh="学术经历" data-en="Academic Background">学术经历</h2></div>
+        <div class="education-grid">
+          <article class="education-card"><p class="period" data-i18n data-zh="2025.09 - 2027.06" data-en="Sep 2025 - Jun 2027">2025.09 - 2027.06</p><h3 data-i18n data-zh="西南财经大学" data-en="Southwestern University of Finance and Economics">西南财经大学</h3><p data-i18n data-zh="金融硕士" data-en="Master of Finance">金融硕士</p></article>
+          <article class="education-card"><p class="period" data-i18n data-zh="2021.09 - 2025.06" data-en="Sep 2021 - Jun 2025">2021.09 - 2025.06</p><h3 data-i18n data-zh="浙江工商大学" data-en="Zhejiang Gongshang University">浙江工商大学</h3><p data-i18n data-zh="学士学位" data-en="Bachelor's Degree">学士学位</p></article>
         </div>
       </section>
 
       <section id="projects" class="section shell" aria-labelledby="projects-title">
-        <div class="section-heading"><p class="eyebrow">SELECTED WORK</p><h2 id="projects-title">代表项目</h2></div>
+        <div class="section-heading"><p class="eyebrow" data-i18n data-zh="校园经历" data-en="CAMPUS EXPERIENCE">校园经历</p><h2 id="projects-title" data-i18n data-zh="研究与竞赛项目" data-en="Research and Competition Projects">研究与竞赛项目</h2></div>
         <div class="project-grid">
           <article class="project-card">
-            <div class="card-top"><p class="card-index">01</p><p class="period">2023.05 — 2023.11</p></div>
-            <h3>浙江省证券投资大赛</h3>
-            <p class="role">量化交易组</p>
-            <p>以宏观政策不确定性与市场恐慌指标辅助构建股票池，结合 ARIMA 预测与多因子框架评估个股。</p>
-            <ul><li>使用随机森林筛选核心因子并完成权重分配</li><li>结合 RSI 信号动态调仓，设置个股与大盘双重止损</li></ul>
-            <div class="tags"><span>EPU / VIX</span><span>ARIMA</span><span>随机森林</span><span>RSI</span></div>
+            <div class="card-top"><p class="card-index">01</p><p class="period" data-i18n data-zh="2023.05 - 2023.11" data-en="May 2023 - Nov 2023">2023.05 - 2023.11</p></div>
+            <h3 data-i18n data-zh="浙江省证券投资大赛" data-en="Zhejiang Province Securities Investment Competition">浙江省证券投资大赛</h3>
+            <p class="role" data-i18n data-zh="量化交易组" data-en="Quantitative Trading Team">量化交易组</p>
+            <p data-i18n data-zh="以宏观政策不确定性与市场恐慌指标辅助构建股票池，结合 ARIMA 预测与多因子框架评估个股。" data-en="Developed a stock-selection framework using macroeconomic policy uncertainty and market-panic indicators, combined with ARIMA forecasting and multi-factor analysis.">以宏观政策不确定性与市场恐慌指标辅助构建股票池，结合 ARIMA 预测与多因子框架评估个股。</p>
+            <ul><li data-i18n data-zh="使用随机森林筛选核心因子并完成权重分配" data-en="Used Random Forest methods to select key factors and rebalance factor weights.">使用随机森林筛选核心因子并完成权重分配</li><li data-i18n data-zh="结合 RSI 信号动态调仓，设置个股与大盘双重止损" data-en="Combined RSI signals for dynamic position adjustments and stock- and market-level stop-loss rules.">结合 RSI 信号动态调仓，设置个股与大盘双重止损</li></ul>
+            <div class="tags"><span>EPU / VIX</span><span>ARIMA</span><span data-i18n data-zh="随机森林" data-en="Random Forest">随机森林</span><span>RSI</span></div>
           </article>
           <article class="project-card">
-            <div class="card-top"><p class="card-index">02</p><p class="period">2022.04 — 2023.12</p></div>
-            <h3>国家级创新创业项目</h3>
-            <p class="role">核心成员</p>
-            <p>围绕政府补助与民营企业参与第三次分配的关系开展实证分析，并将案头研究与企业调研结合。</p>
-            <ul><li>基于 CSMAR 面板数据构建固定效应模型并完成稳健性检验</li><li>通过因子分析与 K-means 聚类归纳企业参与模式</li></ul>
-            <div class="tags"><span>CSMAR</span><span>固定效应</span><span>因子分析</span><span>K-means</span></div>
+            <div class="card-top"><p class="card-index">02</p><p class="period" data-i18n data-zh="2022.04 - 2023.12" data-en="Apr 2022 - Dec 2023">2022.04 - 2023.12</p></div>
+            <h3 data-i18n data-zh="国家级创新创业项目" data-en="National-Level Innovation and Entrepreneurship Training Program">国家级创新创业项目</h3>
+            <p class="role" data-i18n data-zh="核心成员" data-en="Core Member">核心成员</p>
+            <p data-i18n data-zh="围绕政府补助与民营企业参与第三次分配的关系开展实证分析，并将案头研究与企业调研结合。" data-en="Examined the relationship between government subsidies and private enterprises' participation in the third distribution through empirical research and field investigation.">围绕政府补助与民营企业参与第三次分配的关系开展实证分析，并将案头研究与企业调研结合。</p>
+            <ul><li data-i18n data-zh="基于 CSMAR 面板数据构建固定效应模型并完成稳健性检验" data-en="Built fixed-effects models using CSMAR panel data and conducted robustness tests.">基于 CSMAR 面板数据构建固定效应模型并完成稳健性检验</li><li data-i18n data-zh="通过因子分析与 K-means 聚类归纳企业参与模式" data-en="Applied factor analysis and K-means clustering to identify corporate participation patterns.">通过因子分析与 K-means 聚类归纳企业参与模式</li></ul>
+            <div class="tags"><span>CSMAR</span><span data-i18n data-zh="固定效应" data-en="Fixed Effects">固定效应</span><span data-i18n data-zh="因子分析" data-en="Factor Analysis">因子分析</span><span>K-means</span></div>
           </article>
         </div>
       </section>
 
       <section id="experience" class="section shell" aria-labelledby="experience-title">
-        <div class="section-heading"><p class="eyebrow">EXPERIENCE</p><h2 id="experience-title">精选经历</h2></div>
+        <div class="section-heading"><p class="eyebrow" data-i18n data-zh="实习经历" data-en="INTERNSHIP EXPERIENCE">实习经历</p><h2 id="experience-title" data-i18n data-zh="投资与研究实践" data-en="Investment and Research Experience">投资与研究实践</h2></div>
         <div class="timeline">
-          <article class="experience-item"><p class="period">2024.10 — 2025.02</p><div><h3>弈宸基金 <span>投资研究部</span></h3><p>聚焦化工细分行业，搭建“供需格局 - 产能市占率 - 上下游盈利”研究框架，追踪高频数据并梳理产业链机会。</p><p>独立完成行业周报与产业链拓扑图，参与行业标的筛选和组内汇报。</p></div></article>
-          <article class="experience-item"><p class="period">2024.06 — 2024.10</p><div><h3>东方证券承销保荐公司 <span>投资银行部</span></h3><p>清洗分析企业工商数据，识别股权穿透异常和关联交易风险；完成 IPO 项目的财务数据验证与合同、发票、运单等单据核验。</p><p>拆解 IPO 问询案例，提炼毛利率、年降与募投变更等高频监管关注点。</p></div></article>
-          <article class="experience-item"><p class="period">2023.07 — 2023.08</p><div><h3>华睿投资 <span>战略投资部</span></h3><p>协助进行早期项目筛选与行业研究，独立完成半导体检测设备行业研究报告，梳理产业链、市场规模与竞争格局。</p></div></article>
+          <article class="experience-item"><p class="period" data-i18n data-zh="2024.10 - 2025.02" data-en="Oct 2024 - Feb 2025">2024.10 - 2025.02</p><div><h3><span data-i18n data-zh="弈宸基金" data-en="Yichen Fund">弈宸基金</span> <span data-i18n data-zh="投资研究部" data-en="Investment Research Department">投资研究部</span></h3><p data-i18n data-zh="聚焦化工细分行业，搭建“供需格局 - 产能市占率 - 上下游盈利”研究框架，追踪高频数据并梳理产业链机会。" data-en="Researched specialty chemical subsectors and built an industry framework covering supply-demand dynamics, capacity and market-share changes, and upstream/downstream profitability.">聚焦化工细分行业，搭建“供需格局 - 产能市占率 - 上下游盈利”研究框架，追踪高频数据并梳理产业链机会。</p><p data-i18n data-zh="独立完成行业周报与产业链拓扑图，参与行业标的筛选和组内汇报。" data-en="Prepared weekly industry updates and a value-chain map; contributed to target screening and internal research presentations.">独立完成行业周报与产业链拓扑图，参与行业标的筛选和组内汇报。</p></div></article>
+          <article class="experience-item"><p class="period" data-i18n data-zh="2024.06 - 2024.10" data-en="Jun 2024 - Oct 2024">2024.06 - 2024.10</p><div><h3><span data-i18n data-zh="东方证券承销保荐公司" data-en="Orient Securities Investment Banking Co., Ltd.">东方证券承销保荐公司</span> <span data-i18n data-zh="投资银行部" data-en="Investment Banking Department">投资银行部</span></h3><p data-i18n data-zh="清洗分析企业工商数据，识别股权穿透异常和关联交易风险；完成 IPO 项目的财务数据验证与合同、发票、运单等单据核验。" data-en="Cleaned and analyzed corporate registration data to identify ownership-structure anomalies and related-party transaction risks; performed financial-data verification for IPO projects and reviewed supporting documents.">清洗分析企业工商数据，识别股权穿透异常和关联交易风险；完成 IPO 项目的财务数据验证与合同、发票、运单等单据核验。</p><p data-i18n data-zh="拆解 IPO 问询案例，提炼毛利率、年降与募投变更等高频监管关注点。" data-en="Analyzed IPO inquiry cases and summarized recurring regulatory focus areas, including gross-margin movements, annual revenue declines, and changes in use of proceeds.">拆解 IPO 问询案例，提炼毛利率、年降与募投变更等高频监管关注点。</p></div></article>
+          <article class="experience-item"><p class="period" data-i18n data-zh="2023.07 - 2023.08" data-en="Jul 2023 - Aug 2023">2023.07 - 2023.08</p><div><h3><span data-i18n data-zh="华睿投资" data-en="Sinowisdom Investment">华睿投资</span> <span data-i18n data-zh="战略投资部" data-en="Strategic Investment Department">战略投资部</span></h3><p data-i18n data-zh="协助进行早期项目筛选与行业研究，独立完成半导体检测设备行业研究报告，梳理产业链、市场规模与竞争格局。" data-en="Supported early-stage project screening and industry research; independently completed an industry research report on semiconductor testing equipment, covering the value chain, market size, and competitive landscape.">协助进行早期项目筛选与行业研究，独立完成半导体检测设备行业研究报告，梳理产业链、市场规模与竞争格局。</p></div></article>
         </div>
       </section>
 
       <section id="skills" class="section shell" aria-labelledby="skills-title">
-        <div class="section-heading"><p class="eyebrow">CAPABILITIES</p><h2 id="skills-title">技能与资质</h2></div>
-        <div class="skills-wrap"><span>Python</span><span>Stata</span><span>Excel</span><span>量化分析</span><span>行业研究</span><span>财务尽调</span><span>金融建模</span><span>CFA 一级</span><span>基金从业资格</span></div>
+        <div class="section-heading"><p class="eyebrow" data-i18n data-zh="技能与资质" data-en="CAPABILITIES">技能与资质</p><h2 id="skills-title" data-i18n data-zh="分析工具与研究能力" data-en="Tools and Research Skills">分析工具与研究能力</h2></div>
+        <div class="skills-wrap"><span>Python</span><span>Stata</span><span>Excel</span><span data-i18n data-zh="量化分析" data-en="Quantitative Analysis">量化分析</span><span data-i18n data-zh="行业研究" data-en="Industry Research">行业研究</span><span data-i18n data-zh="财务尽调" data-en="Financial Due Diligence">财务尽调</span><span data-i18n data-zh="金融建模" data-en="Financial Modeling">金融建模</span><span data-i18n data-zh="CFA 一级已通过" data-en="CFA Program Level I, Passed">CFA 一级已通过</span><span data-i18n data-zh="基金从业资格" data-en="Fund Practitioner Qualification">基金从业资格</span></div>
       </section>
 
       <section id="contact" class="contact shell" aria-labelledby="contact-title">
-        <p class="eyebrow">GET IN TOUCH</p>
-        <h2 id="contact-title">让研究与数据<br>成为判断的起点。</h2>
-        <div class="contact-actions"><a class="github-link" href="https://github.com/wuhangyu766-blip" target="_blank" rel="noreferrer">访问 GitHub <span aria-hidden="true">↗</span></a></div>
+        <p class="eyebrow" data-i18n data-zh="联系" data-en="GET IN TOUCH">联系</p>
+        <h2 id="contact-title" data-i18n data-zh="让研究与数据成为判断的起点。" data-en="Let research and data become the starting point for better judgement.">让研究与数据成为判断的起点。</h2>
+        <div class="contact-actions"><a class="github-link" href="https://github.com/wuhangyu766-blip" target="_blank" rel="noreferrer"><span data-i18n data-zh="访问 GitHub" data-en="Visit GitHub">访问 GitHub</span> <span aria-hidden="true">↗</span></a></div>
       </section>
     </main>
 
-    <footer><div class="shell"><span>© <span data-current-year></span> Jimmy Wu</span><span>金融研究与量化分析</span></div></footer>
+    <footer><div class="shell"><span>© <span data-current-year></span> Jimmy Wu</span><span data-i18n data-zh="金融研究与量化分析" data-en="Investment Research and Quantitative Analysis">金融研究与量化分析</span></div></footer>
   </body>
 </html>
