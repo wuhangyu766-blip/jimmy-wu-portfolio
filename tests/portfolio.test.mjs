@@ -8,11 +8,12 @@ const run = promisify(execFile);
 const page = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 
-test('includes the approved identity and contact links', () => {
+test('includes the approved identity and GitHub link without exposing email', () => {
   assert.match(page, /Jimmy Wu/);
   assert.match(page, /吴航宇/);
-  assert.match(page, /mailto:961360749@qq\.com/);
   assert.match(page, /https:\/\/github\.com\/wuhangyu766-blip/);
+  assert.doesNotMatch(page, /961360749@qq\.com/);
+  assert.doesNotMatch(page, /mailto:/);
 });
 
 test('includes the required sections and excludes the phone number', () => {
