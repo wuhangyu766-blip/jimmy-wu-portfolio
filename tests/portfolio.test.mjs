@@ -42,6 +42,8 @@ test('build creates a deployable dist directory', async () => {
   assert.match(builtStyles, /--surface/);
   assert.match(builtServer, /export default/);
   assert.match(builtServer, /fetch\(request, env\)/);
-  assert.match(builtServer, /env\.ASSETS\.fetch\(request\)/);
+  assert.match(builtServer, /env\.ASSETS\.fetch\(new Request\(assetUrl, request\)\)/);
+  assert.match(builtServer, /pathname === '\/'/);
+  assert.match(builtServer, /pathname = '\/index\.html'/);
   assert.match(builtHosting, /project_id/);
 });
