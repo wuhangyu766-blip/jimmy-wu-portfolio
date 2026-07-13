@@ -7,6 +7,8 @@ import test from 'node:test';
 const run = promisify(execFile);
 const page = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+const script = await readFile(new URL('../assets/site.js', import.meta.url), 'utf8');
+const styles = await readFile(new URL('../assets/styles.css', import.meta.url), 'utf8');
 
 test('includes the approved identity and GitHub link without exposing email', () => {
   assert.match(page, /Jimmy Wu/);
@@ -54,4 +56,27 @@ test('build creates a deployable dist directory', async () => {
   assert.match(builtServer, /pathname === '\/'/);
   assert.match(builtServer, /pathname = '\/index\.html'/);
   assert.match(builtHosting, /project_id/);
+});
+
+test('includes bilingual preference controls and confirmed English resume facts', () => {
+  assert.match(page, /data-language-toggle/);
+  assert.match(page, /data-theme-toggle/);
+  assert.match(page, /data-en="Yichen Fund"/);
+  assert.match(page, /data-en="Orient Securities Investment Banking Co\.?, Ltd\."/);
+  assert.match(page, /data-en="Sinowisdom Investment"/);
+  assert.match(page, /data-en="CFA Program Level I, Passed"/);
+  assert.match(page, /Zhejiang Gongshang University/);
+  assert.match(page, /Sep 2021 - Jun 2025/);
+  assert.match(page, /Sep 2025 - Jun 2027/);
+  assert.match(script, /localStorage/);
+  assert.match(script, /data-theme/);
+});
+
+test('includes a decorative reduced-motion bouquet without external assets', () => {
+  assert.match(page, /class="hero-bouquet"/);
+  assert.match(page, /aria-hidden="true"/);
+  assert.doesNotMatch(page, /<img[^>]+hero-bouquet/);
+  assert.match(styles, /@keyframes bloom/);
+  assert.match(styles, /prefers-reduced-motion: reduce/);
+  assert.match(styles, /\.hero-bouquet/);
 });
