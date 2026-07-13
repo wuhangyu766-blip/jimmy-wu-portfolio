@@ -32,6 +32,13 @@ test('declares the static-site build command required by hosting', () => {
   assert.equal(typeof packageJson.scripts.build, 'string');
 });
 
+test('GitHub Pages workflow deploys the static client directory', async () => {
+  const workflow = await readFile(new URL('../.github/workflows/deploy-pages.yml', import.meta.url), 'utf8');
+  assert.match(workflow, /pages: write/);
+  assert.match(workflow, /npm run build/);
+  assert.match(workflow, /path: dist\/client/);
+});
+
 test('build creates a deployable dist directory', async () => {
   await run(process.execPath, ['scripts/build.mjs'], { cwd: new URL('..', import.meta.url) });
   const builtPage = await readFile(new URL('../dist/client/index.html', import.meta.url), 'utf8');
