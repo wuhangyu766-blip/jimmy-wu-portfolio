@@ -64,7 +64,7 @@ test('includes bilingual preference controls and confirmed English resume facts'
   assert.match(page, /data-en="Yichen Fund"/);
   assert.match(page, /data-en="Orient Securities Investment Banking Co\.?, Ltd\."/);
   assert.match(page, /data-en="Sinowisdom Investment"/);
-  assert.match(page, /data-en="CFA Program Level I, Passed"/);
+  assert.match(page, /data-en="CFA Program Level I"/);
   assert.match(page, /Zhejiang Gongshang University/);
   assert.match(page, /Sep 2021 - Jun 2025/);
   assert.match(page, /Sep 2025 - Jun 2027/);
@@ -79,4 +79,22 @@ test('includes a decorative reduced-motion bouquet without external assets', () 
   assert.match(styles, /@keyframes bloom/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
   assert.match(styles, /\.hero-bouquet/);
+});
+
+test('refines the hierarchy, capabilities, internship interactions, and bouquet depth', () => {
+  assert.match(page, /data-zh="吴航宇" data-en="Jimmy Wu"/);
+  assert.match(page, /金融研究 · 量化分析 · 财务分析/);
+  assert.match(page, /Investment Research · Quantitative Analysis · Financial Analysis/);
+  assert.match(page, /Codex · Claude Code/);
+  assert.match(styles, /\.career-sections #experience \{ order:-1; \}/);
+  assert.match(page, /class="experience-item interactive-card"/);
+  assert.match(page, /class="capability-grid"/);
+  assert.doesNotMatch(page, /Financial Due Diligence/);
+  assert.doesNotMatch(page, /CFA Program Level I, Passed/);
+  assert.match(styles, /Palatino Linotype/);
+  assert.match(styles, /\.interactive-card:hover/);
+  assert.match(styles, /perspective:/);
+  assert.match(styles, /translateZ\(/);
+  assert.match(page, /petal-back/);
+  assert.match(page, /petal-front/);
 });
