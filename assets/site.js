@@ -61,3 +61,24 @@ themeToggle.addEventListener('click', () => {
 
 const year = document.querySelector('[data-current-year]');
 if (year) year.textContent = new Date().getFullYear();
+
+function initFlowerMotion() {
+  const flower = document.querySelector('.hero-flower-stage');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (!flower || reducedMotion) {
+    if (flower) root.dataset.flowerStatic = 'true';
+    return;
+  }
+
+  if (!finePointer) return;
+
+  window.setTimeout(() => {
+    window.addEventListener('pointermove', () => {
+      root.dataset.flowerStatic = 'true';
+    }, { once: true, passive: true });
+  }, 1600);
+}
+
+initFlowerMotion();
