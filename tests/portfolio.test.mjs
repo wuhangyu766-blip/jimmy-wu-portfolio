@@ -64,7 +64,7 @@ test('includes bilingual preference controls and confirmed English resume facts'
   assert.match(page, /data-en="Yichen Fund"/);
   assert.match(page, /data-en="Orient Securities Investment Banking Co\.?, Ltd\."/);
   assert.match(page, /data-en="Sinowisdom Investment"/);
-  assert.match(page, /data-en="CFA Program Level I"/);
+  assert.match(page, /data-en="CFA Level I"/);
   assert.match(page, /Zhejiang Gongshang University/);
   assert.match(page, /Sep 2021 - Jun 2025/);
   assert.match(page, /Sep 2025 - Jun 2027/);
@@ -72,13 +72,13 @@ test('includes bilingual preference controls and confirmed English resume facts'
   assert.match(script, /data-theme/);
 });
 
-test('includes a decorative reduced-motion bouquet without external assets', () => {
-  assert.match(page, /class="hero-bouquet"/);
+test('includes a decorative reduced-motion flower without external assets', () => {
+  assert.match(page, /class="hero-flower-stage"/);
   assert.match(page, /aria-hidden="true"/);
-  assert.doesNotMatch(page, /<img[^>]+hero-bouquet/);
-  assert.match(styles, /@keyframes bloom/);
+  assert.doesNotMatch(page, /<img[^>]+hero-flower-stage/);
+  assert.match(styles, /@keyframes petal-unfurl/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
-  assert.match(styles, /\.hero-bouquet/);
+  assert.match(styles, /\.hero-flower-stage/);
 });
 
 test('refines the hierarchy, capabilities, internship interactions, and bouquet depth', () => {
@@ -95,6 +95,22 @@ test('refines the hierarchy, capabilities, internship interactions, and bouquet 
   assert.match(styles, /\.interactive-card:hover/);
   assert.match(styles, /perspective:/);
   assert.match(styles, /translateZ\(/);
-  assert.match(page, /petal-back/);
-  assert.match(page, /petal-front/);
+  assert.match(page, /petal-ring-outer/);
+  assert.match(page, /petal-ring-inner/);
+});
+
+test('renders a full-screen three-ring translucent CSS 3D flower', () => {
+  assert.match(page, /class="hero-flower-stage"/);
+  assert.match(page, /class="petal-ring petal-ring-outer"/);
+  assert.match(page, /class="petal-ring petal-ring-middle"/);
+  assert.match(page, /class="petal-ring petal-ring-inner"/);
+  assert.ok((page.match(/class="flower-petal/g) ?? []).length >= 20);
+  assert.match(page, /class="hero-highlights"/);
+  assert.doesNotMatch(page, /class="hero-bouquet"/);
+  assert.match(styles, /min-height:calc\(100svh - 68px\)/);
+  assert.match(styles, /transform-style:preserve-3d/);
+  assert.match(styles, /backdrop-filter:blur/);
+  assert.match(styles, /@keyframes petal-unfurl/);
+  assert.match(styles, /@keyframes flower-float/);
+  assert.match(styles, /prefers-reduced-motion: reduce/);
 });
