@@ -76,12 +76,12 @@ test('includes a decorative reduced-motion flower without external assets', () =
   assert.match(page, /class="hero-flower-stage"/);
   assert.match(page, /aria-hidden="true"/);
   assert.doesNotMatch(page, /<img[^>]+hero-flower-stage/);
-  assert.match(styles, /@keyframes petal-unfurl/);
+  assert.match(styles, /@keyframes petal-bloom-cycle/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
   assert.match(styles, /\.hero-flower-stage/);
 });
 
-test('refines the hierarchy, capabilities, internship interactions, and bouquet depth', () => {
+test('refines the hierarchy, capabilities, and internship interactions', () => {
   assert.match(page, /data-zh="吴航宇" data-en="Jimmy Wu"/);
   assert.match(page, /金融研究 · 量化分析 · 财务分析/);
   assert.match(page, /Investment Research · Quantitative Analysis · Financial Analysis/);
@@ -93,24 +93,35 @@ test('refines the hierarchy, capabilities, internship interactions, and bouquet 
   assert.doesNotMatch(page, /CFA Program Level I, Passed/);
   assert.match(styles, /Palatino Linotype/);
   assert.match(styles, /\.interactive-card:hover/);
-  assert.match(styles, /perspective:/);
-  assert.match(styles, /translateZ\(/);
   assert.match(page, /petal-ring-outer/);
   assert.match(page, /petal-ring-inner/);
 });
 
-test('renders a full-screen three-ring translucent CSS 3D flower', () => {
-  assert.match(page, /class="hero-flower-stage"/);
+test('renders exactly sixteen lightweight petals in two rings', () => {
+  assert.equal((page.match(/class="flower-petal"/g) ?? []).length, 16);
   assert.match(page, /class="petal-ring petal-ring-outer"/);
-  assert.match(page, /class="petal-ring petal-ring-middle"/);
   assert.match(page, /class="petal-ring petal-ring-inner"/);
-  assert.ok((page.match(/class="flower-petal/g) ?? []).length >= 20);
-  assert.match(page, /class="hero-highlights"/);
-  assert.doesNotMatch(page, /class="hero-bouquet"/);
-  assert.match(styles, /min-height:calc\(100svh - 68px\)/);
-  assert.match(styles, /transform-style:preserve-3d/);
-  assert.match(styles, /backdrop-filter:blur/);
-  assert.match(styles, /@keyframes petal-unfurl/);
-  assert.match(styles, /@keyframes flower-float/);
+  assert.doesNotMatch(page, /petal-ring-middle/);
+  assert.match(page, /class="hero-summary"/);
+  assert.match(page, /Python · Codex · Claude Code/);
+  assert.doesNotMatch(page, /Python · Stata/);
+  assert.match(styles, /@keyframes petal-bloom-cycle/);
+  assert.match(styles, /rotateX\(8deg\)/);
+});
+
+test('keeps the flower compositor-friendly and supports a static open state', () => {
+  const flowerCss = styles.slice(styles.indexOf('/* Lightweight repeating background flower */'));
+  assert.doesNotMatch(flowerCss, /backdrop-filter|filter:\s*blur|will-change|flower-float|translateZ\(/);
+  assert.match(flowerCss, /data-flower-static="true"/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
+});
+
+test('arms one passive pointer stop after the first bloom', () => {
+  assert.match(script, /matchMedia\('\(prefers-reduced-motion: reduce\)'\)/);
+  assert.match(script, /matchMedia\('\(pointer: fine\)'\)/);
+  assert.match(script, /setTimeout\([\s\S]*1600/);
+  assert.match(script, /pointermove/);
+  assert.match(script, /once:\s*true/);
+  assert.match(script, /passive:\s*true/);
+  assert.match(script, /flowerStatic\s*=\s*'true'/);
 });
