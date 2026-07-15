@@ -116,12 +116,27 @@ test('keeps the flower compositor-friendly and supports a static open state', ()
   assert.match(styles, /prefers-reduced-motion: reduce/);
 });
 
-test('arms one passive pointer stop after the first bloom', () => {
+test('uses a visible rose palette and a ten-second bloom cycle', () => {
+  const flowerCss = styles.slice(styles.indexOf('/* Lightweight repeating background flower */'));
+  assert.match(flowerCss, /hero-flower-stage[^}]+opacity:\.78/);
+  assert.match(flowerCss, /petal-ring-outer[^}]+--petal-opacity:\.62/);
+  assert.match(flowerCss, /petal-ring-inner[^}]+--petal-opacity:\.72/);
+  assert.match(flowerCss, /169 67 111/);
+  assert.match(flowerCss, /petal-bloom-cycle 10s/);
+  assert.match(flowerCss, /@keyframes petal-bloom-cycle \{[^\n]+23%,70%/);
+  assert.match(flowerCss, /@media \(max-width:700px\) \{[^\n]+hero-flower-stage \{[^}]+opacity:\.50/);
+});
+
+test('temporarily pauses after the first bloom and resumes after pointer idle', () => {
   assert.match(script, /matchMedia\('\(prefers-reduced-motion: reduce\)'\)/);
   assert.match(script, /matchMedia\('\(pointer: fine\)'\)/);
-  assert.match(script, /setTimeout\([\s\S]*1600/);
+  assert.match(script, /setTimeout\([\s\S]*2800/);
   assert.match(script, /pointermove/);
-  assert.match(script, /once:\s*true/);
+  assert.match(script, /flowerPaused\s*=\s*'true'/);
+  assert.match(script, /clearTimeout\(/);
+  assert.match(script, /delete root\.dataset\.flowerPaused/);
+  assert.match(script, /1500/);
+  assert.doesNotMatch(script, /once:\s*true/);
   assert.match(script, /passive:\s*true/);
-  assert.match(script, /flowerStatic\s*=\s*'true'/);
+  assert.match(styles, /data-flower-paused="true"[^}]+animation-play-state:paused/);
 });
