@@ -74,11 +74,18 @@ function initFlowerMotion() {
 
   if (!finePointer) return;
 
+  let resumeTimer;
+  const pauseFlower = () => {
+    root.dataset.flowerPaused = 'true';
+    window.clearTimeout(resumeTimer);
+    resumeTimer = window.setTimeout(() => {
+      delete root.dataset.flowerPaused;
+    }, 1500);
+  };
+
   window.setTimeout(() => {
-    window.addEventListener('pointermove', () => {
-      root.dataset.flowerStatic = 'true';
-    }, { once: true, passive: true });
-  }, 1600);
+    window.addEventListener('pointermove', pauseFlower, { passive: true });
+  }, 2800);
 }
 
 initFlowerMotion();
